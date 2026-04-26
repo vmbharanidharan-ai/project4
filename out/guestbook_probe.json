@@ -1,0 +1,15 @@
+{
+  "status": 403,
+  "response": {
+    "ok": false,
+    "error": "puzzle incomplete",
+    "missing_levels": [
+      "L1_rabbit",
+      "L2_cra0004",
+      "L4_ship",
+      "L5_signal",
+      "L6_carlo"
+    ],
+    "hint": "complete all 6 levels before signing. see /rabbit"
+  }
+}

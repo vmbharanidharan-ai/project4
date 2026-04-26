@@ -1,0 +1,1 @@
+{"message":"patterns reveal intent","sequence":[3,1,18,12,15],"hint":"A1Z26"}

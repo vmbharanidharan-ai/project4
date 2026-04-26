@@ -1,0 +1,20 @@
+[
+  {
+    "level": "L4_ship",
+    "answer": "SHIP",
+    "status": 200,
+    "response": {
+      "ok": true,
+      "token": "L4_ship.1777250841422.58f9c8cebbc23a0e0af93f34727470a3"
+    }
+  },
+  {
+    "level": "L6_carlo",
+    "answer": "CARLO",
+    "status": 200,
+    "response": {
+      "ok": true,
+      "token": "L6_carlo.1777250841453.97d51afa384627d89a5811dee804b533"
+    }
+  }
+]

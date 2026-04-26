@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>· · ·</title>
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css?family=big-shoulders-display:700,900|jetbrains-mono:400,500,700|fraunces:400i,900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F0E0C;--paper:#ECE6D7;--primary:#E63E21;--signal:#8EE000;
+  --f-display:"Big Shoulders Display",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --f-editorial:"Fraunces",Georgia,serif;
+  --gutter:clamp(16px,3vw,40px);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:var(--f-mono);color:var(--ink);background:var(--paper);
+  min-height:100vh;display:grid;place-items:center;padding:var(--gutter);
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--primary);color:var(--paper)}
+
+/* grain to match main site */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:9000;
+  opacity:0.06;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.06  0 0 0 0 0.055  0 0 0 0 0.047  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.wrap{
+  max-width:640px;width:100%;
+  display:grid;gap:40px;
+  text-align:left;
+}
+
+.crumb{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  opacity:0.45;
+}
+.crumb a{color:inherit;border-bottom:1px solid currentColor;padding-bottom:2px}
+
+h1{
+  font-family:var(--f-display);font-weight:900;
+  font-size:clamp(48px,8vw,120px);line-height:0.88;letter-spacing:-0.04em;
+  text-transform:uppercase;
+}
+h1 em{
+  font-family:var(--f-editorial);font-style:italic;font-weight:400;
+  color:var(--primary);text-transform:none;letter-spacing:-0.01em;
+}
+
+.body{
+  font-size:14px;line-height:1.6;max-width:50ch;
+}
+.body p+p{margin-top:14px}
+.body strong{font-weight:500;color:var(--primary)}
+
+.meta{
+  display:flex;gap:24px;flex-wrap:wrap;
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  opacity:0.4;padding-top:14px;border-top:1px solid rgba(15,14,12,0.1);
+}
+
+/* one slow reveal — matches site's "outExpo" feel */
+.wrap>*{
+  opacity:0;transform:translateY(12px);
+  animation:in 900ms var(--ease-out) forwards;
+}
+.wrap>*:nth-child(1){animation-delay:80ms}
+.wrap>*:nth-child(2){animation-delay:200ms}
+.wrap>*:nth-child(3){animation-delay:360ms}
+.wrap>*:nth-child(4){animation-delay:520ms}
+@keyframes in{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.wrap>*{animation:none;opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<main class="wrap">
+  <div class="crumb"><a href="/">← back</a> · rabbit · 01/01</div>
+  <h1>you found <em>something.</em><br>most people won't.</h1>
+  <div class="body">
+    <p>find what's missing.</p>
+    <p>not here. <strong>somewhere you've already been.</strong></p>
+  </div>
+  <div class="meta">
+    <span>no map</span>
+    <span>no hints</span>
+    <span>look again</span>
+  </div>
+</main>
+
+<script>
+// Behavior tracking + server-issued token.
+(function(){
+  var TOKEN='L1_rabbit.1777250896933.a8c6e1cd666f146e178dd2560bb685ec';
+  try{
+    var k='cd_puzzle_state_v1';
+    var s=JSON.parse(localStorage.getItem(k)||'{}');
+    if(!s.started_at) s.started_at=Date.now();
+    s.rabbit_at=s.rabbit_at||Date.now();
+    s.steps_completed=s.steps_completed||[];
+    if(!s.steps_completed.includes('L1_rabbit')) s.steps_completed.push('L1_rabbit');
+    s.tokens=s.tokens||{};
+    if(TOKEN && TOKEN.indexOf('__LEVEL')!==0) s.tokens.L1_rabbit=TOKEN;
+    localStorage.setItem(k,JSON.stringify(s));
+  }catch(e){}
+  console.log('%c· L1/06 · rabbit found ·','color:#8EE000;font-family:monospace;font-size:11px');
+})();
+</script>
+</body>
+</html>
